@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" >
+    <head>
+        <meta charset="utf-8" />
+        <meta name="Stas Melnikov" content="Planets" />
+        <title>Planets</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <link href="css/main.css" rel="stylesheet" type="text/css" />
+    	<script id="vertexShader" type="x-shader/x-vertex">
+			uniform vec3 viewVector;
+			uniform float c;
+			uniform float p;
+			varying float intensity;
+			void main() 
+			{
+				vec3 vNormal = normalize( normalMatrix * normal );
+				vec3 vNormel = normalize( normalMatrix * viewVector );
+				intensity = pow( c - dot(vNormal, vNormel), p );
+				gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
+			}
+		</script>
+        <script id="fragmentShader" type="x-shader/x-vertex"> 
+uniform vec3 glowColor;
+varying float intensity;
+void main() 
+{
+	vec3 glow = glowColor * intensity;
+    gl_FragColor = vec4( glow, 1.0 );
+}
+</script>
+    </head>
+    <body>
+    <div id="fade_white"></div>
+    <style>
+	#fade_white{width:100%;height:100%;position:fixed;background:white;z-index:1000}
+    #button
+    {
+		display: none;
+position: fixed;
+color: white;
+font-family: sans-serif;
+font-size: 29pt;
+border: 2px solid white;
+padding: 5px 10px;
+width: 200px;
+text-align: center;
+height: 50px;
+line-height: 50px;
+top: 50%;
+left: 50%;
+margin-left: -100px;
+margin-top: -25px;
+	}
+    </style>
+        <script src="js/three.min.js"></script>
+        <script src="js/THREEx.WindowResize.js"></script>
+        <script src="js/OrbitControlsRotateY.js"></script>
+        <script src="js/jquery-2.1.1.min.js"></script>
+        <script src="js/stats.min.js"></script>
+        <script src="js/Projector.js"></script>
+        <script src="js/script.js"></script>
+        <div id="button">ZEST</div>
+        <video id="globe_video"  width="572" autoplay loop src="videos/zest_logo_loop.webm" style="position: absolute;
+width: 310px;
+top: 50px;
+display:block;
+right: 0px;"> </video>
+<video id="globe_video_2"  width="572" stop loop src="videos/zest_logo_end.webm" style="position: absolute;
+width: 310px;
+top: 50px;
+display:none;
+right: 0px;"> </video>
+	</body>
+</html>

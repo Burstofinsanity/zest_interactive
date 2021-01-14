@@ -1,0 +1,719 @@
+<!doctype html>
+<html>
+<head>
+<script src="js/jquery-2.1.1.min.js"></script>
+<script src="js/jquery.mobile.custom.min.js"></script>
+<script src="js/zest.js"></script>
+<meta charset="UTF-8">
+<title>Zest</title>
+<link href="css/screen.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<div id="clouds">
+  <div id="cloud_01"></div>
+  <div id="cloud_02"></div>
+</div>
+<div id="container">
+<div id="hot_spots">
+  <div id="active">
+      <div id="spot_00" class="spot" value=0 style="left:790px;top:650px;" >
+        <div class="pulse"></div>
+      </div>
+      <div id="spot_01" class="spot" value=1 style="left:915px;top:800px;" >
+        <div class="pulse"></div>
+      </div>
+      <div id="spot_02" class="spot" value=2 style="left:925px;top:815px;" >
+        <div class="pulse"></div>
+      </div>
+      <div id="spot_03" class="spot" value=3 style="left:842px;top:803px;" >
+        <div class="pulse"></div>
+      </div>
+      <div id="spot_04" class="spot" value=4 style="left:922px;top:787px;" >
+        <div class="pulse"></div>
+      </div>
+      <div id="spot_05" class="spot" value=5 style="left:950px;top:810px;" >
+        <div class="pulse"></div>
+      </div>
+      <div id="spot_06" class="spot" value=6 style="left:985px;top:750px;" >
+        <div class="pulse"></div>
+      </div>
+      <div id="spot_07" class="spot" value=7 style="left:975px;top:790px;" >
+        <div class="pulse"></div>
+      </div>
+      <div id="spot_08" class="spot" value=8 style="left:985px;top:765px;" >
+        <div class="pulse"></div>
+      </div>
+      <div id="spot_09" class="spot" value=9 style="left:977px;top:810px;" >
+        <div class="pulse"></div>
+       </div>
+       <div id="spot_10" class="spot" value=10 style="left:995px;top:805px;" >
+        <div class="pulse"></div>
+      </div>
+  </div>
+  <div id="not_active">
+      <div class="white_spot" style="left:1170px;top:845px;" >
+        <div class="pulse"></div>
+      </div>
+      <div class="white_spot" style="left:1225px;top:725px;" >
+        <div class="pulse"></div>
+      </div>
+      <div class="white_spot" style="left:1040px;top:271px;" >
+        <div class="pulse"></div>
+      </div>
+      <div class="white_spot" style="left:1070px;top:338px;" >
+        <div class="pulse"></div>
+      </div>
+      <div class="white_spot" style="left:425px;top:254px;" >
+        <div class="pulse"></div>
+      </div>
+      <div class="white_spot" style="left:435px;top:300px;" >
+        <div class="pulse"></div>
+      </div>
+      <div class="white_spot" style="left:405px;top:345px;" >
+        <div class="pulse"></div>
+      </div>
+      <div class="white_spot" style="left:465px;top:353px;" >
+        <div class="pulse"></div>
+      </div>
+      <div class="white_spot" style="left:451px;top:425px;" >
+        <div class="pulse"></div>
+      </div>
+      <div class="white_spot" style="left:473px;top:390px;" >
+        <div class="pulse"></div>
+      </div>
+      <div class="white_spot" style="left:520px;top:380px;" >
+        <div class="pulse"></div>
+      </div>
+      <div class="white_spot" style="left:570px;top:390px;" >
+        <div class="pulse"></div>
+      </div>
+      <div class="white_spot" style="left:595px;top:365px;" >
+        <div class="pulse"></div>
+      </div>
+      <div class="white_spot" style="left:575px;top:470px;" >
+        <div class="pulse"></div>
+      </div>
+      <div class="white_spot" style="left:580px;top:445px;" >
+        <div class="pulse"></div>
+      </div>
+      <div class="white_spot" style="left:790px;top:820px;" >
+        <div class="pulse"></div>
+      </div
+      ><div class="white_spot" style="left:835px;top:790px;" >
+        <div class="pulse"></div>
+      </div>
+      <div class="white_spot" style="left:815px;top:880px;" >
+        <div class="pulse"></div>
+      </div>
+      <div class="white_spot" style="left:980px;top:910px;" >
+        <div class="pulse"></div>
+      </div>
+      <div class="white_spot" style="left:960px;top:865px;" >
+        <div class="pulse"></div>
+      </div>
+      <div class="white_spot" style="left:1030px;top:790px;" >
+        <div class="pulse"></div>
+      </div>
+      <div class="white_spot" style="left:1060px;top:760px;" >
+        <div class="pulse"></div>
+      </div>
+      <div class="white_spot" style="left:1100px;top:730px;" >
+        <div class="pulse"></div>
+      </div>
+      <div class="white_spot" style="left:1100px;top:585px;" >
+        <div class="pulse"></div>
+      </div>
+      <div class="white_spot" style="left:940px;top:530px;" >
+        <div class="pulse"></div>
+      </div>
+      <div class="white_spot" style="left:970px;top:510px;" >
+        <div class="pulse"></div>
+      </div>
+      <div class="white_spot" style="left:980px;top:335px;" >
+        <div class="pulse"></div>
+      </div>
+      <div class="white_spot" style="left:1010px;top:530px;" >
+        <div class="pulse"></div>
+      </div>
+      <div class="white_spot" style="left:1000px;top:550px;" >
+        <div class="pulse"></div>
+      </div>
+      <div class="white_spot" style="left:1010px;top:570px;" >
+        <div class="pulse"></div>
+      </div>
+      <div class="white_spot" style="left:1015px;top:580px;" >
+        <div class="pulse"></div>
+      </div>
+      <div class="white_spot" style="left:1040px;top:650px;" >
+        <div class="pulse"></div>
+      </div>
+      <div class="white_spot" style="left:925px;top:670px;" >
+        <div class="pulse"></div>
+      </div>
+      <div class="white_spot" style="left:950px;top:680px;" >
+        <div class="pulse"></div>
+      </div>
+      <div class="white_spot" style="left:970px;top:690px;" >
+        <div class="pulse"></div>
+      </div>
+      <div class="white_spot" style="left:940px;top:695px;" >
+        <div class="pulse"></div>
+      </div>
+      <div class="white_spot" style="left:770px;top:705px;" >
+        <div class="pulse"></div>
+      </div>
+      <div class="white_spot" style="left:950px;top:725px;" >
+        <div class="pulse"></div>
+      </div>
+  </div>
+</div>
+<div id="top">
+  <div class="controls">
+    <div class="button btn_01" id="btn_01">Projects</div>
+    <div class="button btn_02" id="btn_02">Products</div>
+    <div class="button btn_03" id="btn_03">Companies</div>
+    <div class="button btn_04" id="btn_04">Connect</div>
+    <div class="logo small_logo"></div>
+  </div>
+  <div class="content">
+    <div class="header">
+      <div class="icon_holder"><span class="icon"></span></div>
+      <div class="title"></div>
+      <div class="description"></div>
+      <div class="close"></div>
+      <div class="flip"></div>
+    </div>
+    <div class="holder">
+      <div class="type projects">
+        <div class="projects_cont">
+          <div class="arrow_left"></div>
+          <div class="projects_content">
+            <ul class="projects_list">
+              <li class="project_item" value="pjt_01">
+                <div class="project_image_holder"><img src="projects/twa_image01.jpg"/	></div>
+                <div class="project_info">
+                  <h6>BANRO MINING - ZAMBIA</h6>
+                  <h3>TWANGIZABANRO</h3>
+                </div>
+              </li>
+              <li class="project_item" value="pjt_02">
+                <div class="project_image_holder"><img src="projects/twa_image01.jpg"/	></div>
+                <div class="project_info">
+                  <h6>BANRO MINING - ZAMBIA</h6>
+                  <h3>TWANGIZABANRO</h3>
+                </div>
+              </li>
+              <li class="project_item" value="pjt_03">
+                <div class="project_image_holder"><img src="projects/twa_image01.jpg"/	></div>
+                <div class="project_info">
+                  <h6>BANRO MINING - ZAMBIA</h6>
+                  <h3>TWANGIZABANRO</h3>
+                </div>
+              </li>
+              <li class="project_item" value="pjt_04">
+                <div class="project_image_holder"><img src="projects/kinsenda/image_04.jpg"/	></div>
+                <div class="project_info">
+                  <h6>BANRO MINING - ZAMBIA</h6>
+                  <h3>TWANGIZABANRO</h3>
+                </div>
+              </li>
+              <li class="project_item" value="pjt_05">
+                <div class="project_image_holder"><img src="projects/kinsenda/image_05.jpg"/	></div>
+                <div class="project_info">
+                  <h6>BANRO MINING - ZAMBIA</h6>
+                  <h3>TWANGIZABANRO</h3>
+                </div>
+              </li>
+              <li class="project_item" value="pjt_06">
+                <div class="project_image_holder"><img src="projects/kinsenda/image_06.jpg"/	></div>
+                <div class="project_info">
+                  <h6>Zest Electric mortos</h6>
+                  <h3>W50</h3>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="arrow_right"></div>
+        </div>
+      </div>
+      <div class="type products">
+        <div class="products_cont">
+          <div class="arrow_left"></div>
+          <div class="products_content">
+            <ul class="products_list">
+              <li class="product_item" value="pdc_01">
+                <div class="product_image_holder"><img src="images/products/image_01.png"/	></div>
+                <div class="product_info">
+                  <h6>Zest Electric mortos</h6>
+                  <h3>W50</h3>
+                </div>
+              </li>
+              <li class="product_item" value="pdc_02">
+                <div class="product_image_holder"><img src="images/products/image_02.png"/	></div>
+                <div class="product_info">
+                  <h6>Zest Electric mortos</h6>
+                  <h3>W22</h3>
+                </div>
+              </li>
+              <li class="product_item" value="pdc_03">
+                <div class="product_image_holder"><img src="images/products/image_03.png"/	></div>
+                <div class="product_info">
+                  <h6>Zest Electric mortos</h6>
+                  <h3>W50</h3>
+                </div>
+              </li>
+              <li class="product_item" value="pdc_01">
+                <div class="product_image_holder"><img src="images/products/image_01.png"/	></div>
+                <div class="product_info">
+                  <h6>Zest Electric mortos</h6>
+                  <h3>W50</h3>
+                </div>
+              </li>
+              <li class="product_item" value="pdc_02">
+                <div class="product_image_holder"><img src="images/products/image_02.png"/	></div>
+                <div class="product_info">
+                  <h6>Zest Electric mortos</h6>
+                  <h3>W22</h3>
+                </div>
+              </li>
+              <li class="product_item" value="pdc_03">
+                <div class="product_image_holder"><img src="images/products/image_03.png"/	></div>
+                <div class="product_info">
+                  <h6>Zest Electric mortos</h6>
+                  <h3>W50</h3>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="arrow_right"></div>
+        </div>
+      </div>
+      <div class="type companies">
+        <div class="company_cont">
+          <div class="arrow_left"></div>
+          <div class="company_content">
+            <ul class="companies_list">
+              <li class="company_item" value="cmp_01">
+                <div class="company_logo_holder"><img class="company_logo" src="companies/WEG-Transformers-Africa.png"/></div>
+                <div class="company_info">
+                  <h6>Zest</h6>
+                  <h3>WEG Transformers Africa</h3>
+                </div>
+              </li>
+              <li class="company_item" value="cmp_02">
+                <div class="company_logo_holder"><img class="company_logo" src="companies/WEG-Transformers-Africa.png"/></div>
+                <div class="company_info">
+                  <h6>ZEST</h6>
+                  <h3>WEG GROUP</h3>
+                </div>
+              </li>
+              <li class="company_item" value="cmp_03">
+                <div class="company_logo_holder"><img class="company_logo" src="companies/WEG-Transformers-Africa.png"/></div>
+                <div class="company_info">
+                  <h6>ZEST</h6>
+                  <h3>zest electric
+                    ghana limited</h3>
+                </div>
+              </li>
+              <li class="company_item" value="cmp_04">
+                <div class="company_logo_holder"><img class="company_logo" src="companies/WEG-Transformers-Africa.png"/></div>
+                <div class="company_info">
+                  <h6></h6>
+                  <h3>Company 04</h3>
+                </div>
+              </li>
+              <li class="company_item" value="cmp_05">
+                <div class="company_logo_holder"><img class="company_logo" src="companies/WEG-Transformers-Africa.png"/></div>
+                <div class="company_info">
+                  <h6></h6>
+                  <h3>Company 05</h3>
+                </div>
+              </li>
+              <li class="company_item" value="cmp_06">
+                <div class="company_logo_holder"><img class="company_logo" src="companies/WEG-Transformers-Africa.png"/></div>
+                <div class="company_info">
+                  <h6></h6>
+                  <h3>Company 06</h3>
+                </div>
+              </li>
+              <li class="company_item" value="cmp_07">
+                <div class="company_logo_holder"><img class="company_logo" src="companies/WEG-Transformers-Africa.png"/></div>
+                <div class="company_info">
+                  <h6></h6>
+                  <h3>Company 07</h3>
+                </div>
+              </li>
+              <li class="company_item" value="cmp_08">
+                <div class="company_logo_holder"><img class="company_logo" src="companies/WEG-Transformers-Africa.png"/></div>
+                <div class="company_info">
+                  <h6></h6>
+                  <h3>Company 08</h3>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="arrow_right"></div>
+        </div>
+      </div>
+      <div class="item_viewer">
+        <div class="extra_elements">
+          <div class="line_right"></div>
+          <div class="line_left"></div>
+        </div>
+        <div class="col_01">
+          <h3>Product Features</h3>
+          <p>- Rated output: 75kW to 1250kW /n<br/>
+            - Number of poles: 2 to 12/n<br/>
+            - Frame sizes: 315H/G to 450J/H /n<br/>
+            - Frequency: 50 and 60 H/n<br/>
+            - Voltage: 380 to 6600V <br/>
+            - Rated output: 75kW to 1250kW /n<br/>
+            - Number of poles: 2 to 12/n<br/>
+            - Frame sizes: 315H/G to 450J/H /n<br/>
+            - Frequency: 50 and 60 H/n<br/>
+            - Voltage: 380 to 6600V <br/>
+          </p>
+        </div>
+        <div class="col_02">
+          <h3>Product info</h3>
+          <p>WEG W50 motors offer not only excellent performance, but comply with the strictest efficiency and safety criteria in the 
+            most severe applications. The compact design provides high performance, while their robust frames ensure low vibration levels. The new mechanical concept not only optimizes characteristics like mass and length, but also offers product versatility and reduced maintenance.accusantium doloremque laudantium, totam rem aperiam. </p>
+        </div>
+        <div class="preview">
+          <div class="img_holder">
+            <div class="img_prev"></div>
+            <div class="image_container"><img src="companies/ta_image_03.jpg" class="phase_2_image" /></div>
+            <div class="img_next"></div>
+            <div class="image_selector"><span class="image_01 selected"></span><span class="image_02"></span><span class="image_03"></span><span class="image_04"></span><span class="image_05"></span></div>
+          </div>
+          <video class="phase_2_video"   id="vid_top" width="572" autoplay loop src="videos/W22x.webm" codecs="vorbis,vp8"> </video>
+        </div>
+      </div>
+      <div class="type open connect">
+        <form id="connect_form_01">
+          <label class="input_header">Personal Information</label>
+          <div class="colum colum_01">
+            <input type="text" id="customer_name_01" placeholder="Name">
+            <input type="text" id="customer_surname_01" placeholder="Surname">
+            <input type="text" id="customer_company_01" placeholder="Company">
+          </div>
+          <div class="colum colum_02">
+            <input type="text" id="customer_country_01" placeholder="Country">
+            <input type="text" id="customer_number_01" placeholder="Contact Number">
+            <input type="email" id="customer_email_01" placeholder="E-mail Adress">
+          </div>
+          <div class="colum colum_03">
+            <label class="input_header select_product">Select Product</label>
+            <div class="product_selects">
+              <input type="checkbox" id="select_01_product_01" name="select_01_product_01"/>
+              <label for="select_01_product_01">Product 01</label>
+              <input type="checkbox" id="select_01_product_02" name="select_01_product_02"/>
+              <label for="select_01_product_02">Product 02</label>
+              <input type="checkbox" id="select_01_product_03" name="select_01_product_03"/>
+              <label for="select_01_product_03">Product 03</label>
+              <input type="checkbox" id="select_01_product_04" name="select_01_product_04"/>
+              <label for="select_01_product_04">Product 04</label>
+              <input type="checkbox" id="select_01_product_05" name="select_01_product_05"/>
+              <label for="select_01_product_05">Product 05</label>
+              <input type="checkbox" id="select_01_product_06" name="select_01_product_06"/>
+              <label for="select_01_product_06">Product 06</label>
+              <input type="checkbox" id="select_01_product_07" name="select_01_product_07"/>
+              <label for="select_01_product_07">Product 07</label>
+            </div>
+          </div>
+          <div class="colum colum_04">
+            <input type="button" class="clear_form" value="clear">
+            <input type="button" class="form_submit" value="submit">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="bottom">
+  <div class="controls">
+    <div class="button btn_01" id="btn_01">Projects</div>
+    <div class="button btn_02" id="btn_02">Products</div>
+    <div class="button btn_03" id="btn_03">Companies</div>
+    <div class="button btn_04" id="btn_04">Connect</div>
+    <div class="logo small_logo"></div>
+  </div>
+  <div class="content">
+    <div class="header">
+      <div class="icon_holder"><span class="icon"></span></div>
+      <div class="title"></div>
+      <div class="description"></div>
+      <div class="close"></div>
+      <div class="flip"></div>
+      <div class="back"></div>
+    </div>
+    <div class="holder">
+      <div class="type projects">
+        <div class="projects_cont">
+          <div class="arrow_left"></div>
+          <div class="projects_content contenter">
+            <ul class="projects_list">
+              <li class="project_item" value="pjt_01">
+                <div class="project_image_holder"><img src="projects/twa_image01.jpg"/	></div>
+                <div class="project_info">
+                  <h6>BANRO MINING - ZAMBIA</h6>
+                  <h3>TWANGIZABANRO</h3>
+                </div>
+              </li>
+              <li class="project_item" value="pjt_02">
+                <div class="project_image_holder"><img src="projects/twa_image01.jpg"/	></div>
+                <div class="project_info">
+                  <h6>BANRO MINING - ZAMBIA</h6>
+                  <h3>TWANGIZABANRO</h3>
+                </div>
+              </li>
+              <li class="project_item" value="pjt_03">
+                <div class="project_image_holder"><img src="projects/twa_image01.jpg"/	></div>
+                <div class="project_info">
+                  <h6>BANRO MINING - ZAMBIA</h6>
+                  <h3>TWANGIZABANRO</h3>
+                </div>
+              </li>
+              <li class="project_item" value="pjt_04">
+                <div class="project_image_holder"><img src="projects/kinsenda/image_04.jpg"/	></div>
+                <div class="project_info">
+                  <h6>BANRO MINING - ZAMBIA</h6>
+                  <h3>TWANGIZABANRO</h3>
+                </div>
+              </li>
+              <li class="project_item" value="pjt_05">
+                <div class="project_image_holder"><img src="projects/kinsenda/image_05.jpg"/	></div>
+                <div class="project_info">
+                  <h6>BANRO MINING - ZAMBIA</h6>
+                  <h3>TWANGIZABANRO</h3>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="arrow_right"></div>
+        </div>
+      </div>
+      <div class="type products">
+        <div class="products_cont">
+          <div class="arrow_left"></div>
+          <div class="products_content contenter">
+            <ul class="products_list">
+              <li class="product_item" value="pdc_01">
+                <div class="product_image_holder"><img src="images/products/image_01.png"/	></div>
+                <div class="product_info">
+                  <h6>Zest Electric mortos</h6>
+                  <h3>W50</h3>
+                </div>
+              </li>
+              <li class="product_item" value="pdc_02">
+                <div class="product_image_holder"><img src="images/products/image_02.png"/	></div>
+                <div class="product_info">
+                  <h6>Zest Electric mortos</h6>
+                  <h3>W22</h3>
+                </div>
+              </li>
+              <li class="product_item" value="pdc_03">
+                <div class="product_image_holder"><img src="images/products/image_03.png"/	></div>
+                <div class="product_info">
+                  <h6>Zest Electric mortos</h6>
+                  <h3>W50</h3>
+                </div>
+              </li>
+              <li class="product_item" value="pdc_04">
+                <div class="product_image_holder"><img src="images/products/image_01.png"/	></div>
+                <div class="product_info">
+                  <h6>Zest Electric mortos</h6>
+                  <h3>W50</h3>
+                </div>
+              </li>
+              <li class="product_item" value="pdc_05">
+                <div class="product_image_holder"><img src="images/products/image_02.png"/	></div>
+                <div class="product_info">
+                  <h6>Zest Electric mortos</h6>
+                  <h3>W22</h3>
+                </div>
+              </li>
+              <li class="product_item" value="pdc_06">
+                <div class="product_image_holder"><img src="images/products/image_03.png"/	></div>
+                <div class="product_info">
+                  <h6>Zest Electric mortos</h6>
+                  <h3>W50</h3>
+                </div>
+              </li>
+              <li class="product_item" value="pdc_07">
+                <div class="product_image_holder"><img src="images/products/image_03.png"/	></div>
+                <div class="product_info">
+                  <h6>Zest Electric mortos</h6>
+                  <h3>W50</h3>
+                </div>
+              </li>
+              <li class="product_item" value="pdc_08">
+                <div class="product_image_holder"><img src="images/products/image_03.png"/	></div>
+                <div class="product_info">
+                  <h6>Zest Electric mortos</h6>
+                  <h3>W50</h3>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="arrow_right"></div>
+        </div>
+      </div>
+      <div class="type companies">
+        <div class="company_cont">
+          <div class="arrow_left"></div>
+          <div class="company_content contenter">
+            <ul class="companies_list">
+              <li class="company_item" value="cmp_01">
+                <div class="company_logo_holder"><img class="company_logo" src="companies/WEG-Transformers-Africa.png"/></div>
+                <div class="company_info">
+                  <h6>Zest</h6>
+                  <h3>WEG Transformers Africa</h3>
+                </div>
+              </li>
+              <li class="company_item" value="cmp_02">
+                <div class="company_logo_holder"><img class="company_logo" src="companies/WEG-Transformers-Africa.png"/></div>
+                <div class="company_info">
+                  <h6>ZEST</h6>
+                  <h3>WEG GROUP</h3>
+                </div>
+              </li>
+              <li class="company_item" value="cmp_03">
+                <div class="company_logo_holder"><img class="company_logo" src="companies/WEG-Transformers-Africa.png"/></div>
+                <div class="company_info">
+                  <h6>ZEST</h6>
+                  <h3>zest electric
+                    ghana limited</h3>
+                </div>
+              </li>
+              <li class="company_item" value="cmp_04">
+                <div class="company_logo_holder"><img class="company_logo" src="companies/WEG-Transformers-Africa.png"/></div>
+                <div class="company_info">
+                  <h6></h6>
+                  <h3>Company 04</h3>
+                </div>
+              </li>
+              <li class="company_item" value="cmp_05">
+                <div class="company_logo_holder"><img class="company_logo" src="companies/WEG-Transformers-Africa.png"/></div>
+                <div class="company_info">
+                  <h6></h6>
+                  <h3>Company 05</h3>
+                </div>
+              </li>
+              <li class="company_item" value="cmp_06">
+                <div class="company_logo_holder"><img class="company_logo" src="companies/WEG-Transformers-Africa.png"/></div>
+                <div class="company_info">
+                  <h6></h6>
+                  <h3>Company 06</h3>
+                </div>
+              </li>
+              <li class="company_item" value="cmp_07">
+                <div class="company_logo_holder"><img class="company_logo" src="companies/WEG-Transformers-Africa.png"/></div>
+                <div class="company_info">
+                  <h6></h6>
+                  <h3>Company 07</h3>
+                </div>
+              </li>
+              <li class="company_item" value="cmp_08">
+                <div class="company_logo_holder"><img class="company_logo" src="companies/WEG-Transformers-Africa.png"/></div>
+                <div class="company_info">
+                  <h6></h6>
+                  <h3>Company 08</h3>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="arrow_right"></div>
+        </div>
+      </div>
+      <div class="item_viewer">
+        <div class="extra_elements">
+          <div class="line_right"></div>
+          <div class="line_left"></div>
+        </div>
+        <div class="col_01">
+          <h3>Product Features</h3>
+          <p>- Rated output: 75kW to 1250kW /n<br/>
+            - Number of poles: 2 to 12/n<br/>
+            - Frame sizes: 315H/G to 450J/H /n<br/>
+            - Frequency: 50 and 60 H/n<br/>
+            - Voltage: 380 to 6600V <br/>
+            - Rated output: 75kW to 1250kW /n<br/>
+            - Number of poles: 2 to 12/n<br/>
+            - Frame sizes: 315H/G to 450J/H /n<br/>
+            - Frequency: 50 and 60 H/n<br/>
+            - Voltage: 380 to 6600V <br/>
+          </p>
+        </div>
+        <div class="col_02">
+          <h3>Product info</h3>
+          <p>WEG W50 motors offer not only excellent performance, but comply with the strictest efficiency and safety criteria in the 
+            most severe applications. The compact design provides high performance, while their robust frames ensure low vibration levels. The new mechanical concept not only optimizes characteristics like mass and length, but also offers product versatility and reduced maintenance.accusantium doloremque laudantium, totam rem aperiam. </p>
+        </div>
+        <div class="preview">
+           <div class="image_viewer">
+           <div class="img_prev"></div>
+          <div class="img_holder">
+            <div class="image_container">
+              <div class="scroll_image"><img src="companies/ta_image_03.jpg" class="phase_2_image phase_2_image_01" /></div>
+              <div class="scroll_image"><img src="companies/ta_image_03.jpg" class="phase_2_image phase_2_image_02" /></div>
+              <div class="scroll_image"><img src="companies/ta_image_03.jpg" class="phase_2_image phase_2_image_03" /></div>
+              <div class="scroll_image"><img src="companies/ta_image_03.jpg" class="phase_2_image phase_2_image_04" /></div>
+              <div class="scroll_image"><img src="companies/ta_image_03.jpg" class="phase_2_image phase_2_image_05" /></div>
+              </div>
+              
+              
+            </div>
+            <div class="img_next"></div>
+            <div class="image_selector"><span class="image_01 selected"></span><span class="image_02"></span><span class="image_03"></span><span class="image_04"></span><span class="image_05"></span></div>	</div>
+            <div class="vid_container">
+            <video class="phase_2_video" id="vid_bottom" width="572" autoplay loop src="videos/W22x.webm" > </video>
+            </div>
+          </div>
+        </div>
+        <div class="type open connect">
+          <form id="connect_form_01">
+            <label class="input_header">Personal Information</label>
+            <div class="colum colum_01">
+              <input type="text" class="customer_name_01" placeholder="Name">
+              <input type="text" class="customer_surname_01" placeholder="Surname">
+              <input type="text" class="customer_company_01" placeholder="Company">
+            </div>
+            <div class="colum colum_02">
+              <input type="text" class="customer_country_01" placeholder="Country">
+              <input type="text" class="customer_number_01" placeholder="Contact Number">
+              <input type="email" class="customer_email_01" placeholder="E-mail Adress">
+            </div>
+            <div class="colum colum_03">
+              <label class="input_header select_product">Select Product</label>
+              <div class="product_selects">
+                <input type="checkbox" class="select_01_product_01 product_select" name="select_01_product_01"/>
+                <label >Product 01</label>
+                <input type="checkbox" class="select_01_product_02 product_select" name="select_01_product_02"/>
+                <label >Product 02</label>
+                <input type="checkbox" class="select_01_product_03 product_select" name="select_01_product_03"/>
+                <label >Product 03</label>
+                <input type="checkbox" class="select_01_product_04 product_select" name="select_01_product_04"/>
+                <label >Product 04</label>
+                <input type="checkbox" class="select_01_product_05 product_select" name="select_01_product_05"/>
+                <label >Product 05</label>
+                <input type="checkbox" class="select_01_product_06 product_select" name="select_01_product_06"/>
+                <label >Product 06</label>
+                <input type="checkbox" class="select_01_product_07 product_select" name="select_01_product_07"/>
+                <label>Product 07</label>
+              </div>
+            </div>
+            <div class="colum colum_04">
+            <div class="inform"></div>
+              <input type="button" class="clear_form" value="clear">
+              <input type="button" class="form_submit" value="submit">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

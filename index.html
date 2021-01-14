@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en" >
+    <head>
+        <meta charset="utf-8" />
+        <meta name="Stas Melnikov" content="Planets" />
+        <script src="js/jquery-2.1.1.min.js"></script>
+		<script src="js/jquery.mobile.custom.min.js"></script>
+        <script src="js/zest.js"></script>
+        <meta charset="UTF-8">
+        <title>Zest</title>
+        <link href="css/screen.css" rel="stylesheet" type="text/css">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <link href="css/main.css" rel="stylesheet" type="text/css" />
+        
+    	<script id="vertexShader" type="x-shader/x-vertex">
+			uniform vec3 viewVector;
+			uniform float c;
+			uniform float p;
+			varying float intensity;
+			void main() 
+			{
+				vec3 vNormal = normalize( normalMatrix * normal );
+				vec3 vNormel = normalize( normalMatrix * viewVector );
+				intensity = pow( c - dot(vNormal, vNormel), p );
+				gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
+			}
+		</script>
+        <script id="fragmentShader" type="x-shader/x-vertex"> 
+uniform vec3 glowColor;
+varying float intensity;
+void main() 
+{
+	vec3 glow = glowColor * intensity;
+    gl_FragColor = vec4( glow, 1.0 );
+}
+</script>
+    </head>
+    <body>
+    <div id="globe">
+    <div id="fade_white"></div>
+    <style>
+	#screen{display:none;}
+	#div_cont{background:white;}
+	#fade_white{width:100%;height:100%;position:fixed;background:white;z-index:1000;display:none;}
+    #button
+    {
+		display: none;
+position: fixed;
+color: white;
+font-family: sans-serif;
+font-size: 29pt;
+border: 2px solid white;
+padding: 5px 10px;
+width: 200px;
+text-align: center;
+height: 50px;
+line-height: 50px;
+top: 50%;
+left: 50%;
+margin-left: -100px;
+margin-top: -25px;
+	}
+    </style>
+        <script src="js/three.min.js"></script>
+        <script src="js/THREEx.WindowResize.js"></script>
+        <script src="js/OrbitControlsRotateY.js"></script>
+        <script src="js/jquery-2.1.1.min.js"></script>
+        <script src="js/stats.min.js"></script>
+        <script src="js/Projector.js"></script>
+        <script src="js/script.js"></script>
+        <div id="button">ZEST</div>
+        <video id="globe_video"  width="572" autoplay loop src="videos/zest_logo_loop.webm" style="position: absolute;
+width: 310px;
+top: 50px;
+display:block;
+right: 0px;"> </video>
+<video id="globe_video_2"  width="572" stop loop src="videos/zest_logo_end.webm" style="position: absolute;
+width: 310px;
+top: 50px;
+display:none;
+right: 0px;"> </video>
+<div id="screen">
+
+
+
+<body>
+<div id="clouds">
+  <div id="cloud_01"></div>
+  <div id="cloud_02"></div>
+</div>
+<div id="container">
+<div id="hot_spots">
+  <div id="active">
+      <div  class="spot" value=2 style="left:800px;top:620px;" >
+        <div class="pulse"></div>
+      </div>
+      <div class="white_spot" style="left:915px;top:800px;" >
+        <div class="pulse"></div>
+      </div>
+      <div class="white_spot"  style="left:925px;top:815px;" >
+        <div class="pulse"></div>
+      </div>
+      <div class="white_spot" style="left:842px;top:803px;" >
+        <div class="pulse"></div>
+      </div>
+      <div  class="white_spot" style="left:922px;top:787px;" >
+        <div class="pulse"></div>
+      </div>
+      <div  class="white_spot" style="left:950px;top:810px;" >
+        <div class="pulse"></div>
+      </div>
+      <div class="white_spot"  style="left:985px;top:750px;" >
+        <div class="pulse"></div>
+      </div>
+      <div  class="white_spot" style="left:975px;top:790px;" >
+        <div class="pulse"></div>
+      </div>
+      <div class="white_spot" style="left:985px;top:765px;" >
+        <div class="pulse"></div>
+      </div>
+      <div class="white_spot" style="left:977px;top:810px;" >
+        <div class="pulse"></div>
+       </div>
+       <div class="white_spot" style="left:995px;top:805px;" >
+        <div class="pulse"></div>
+      </div>
+      <div class="white_spot" style="left:1170px;top:845px;" >
+        <div class="pulse"></div>
+      </div>
+      <div class="white_spot" style="left:1225px;top:725px;" >
+        <div class="pulse"></div>
+      </div>
+      <div class="white_spot" style="left:1040px;top:271px;" >
+        <div class="pulse"></div>
+      </div>
+      <div class="white_spot" style="left:1070px;top:338px;" >
+        <div class="pulse"></div>
+      </div>
+      <div class="white_spot" style="left:425px;top:254px;" >
+        <div class="pulse"></div>
+      </div>
+      <div class="white_spot" style="left:435px;top:300px;" >
+        <div class="pulse"></div>
+      </div>
+      <div class="white_spot" style="left:405px;top:345px;" >
+        <div class="pulse"></div>
+      </div>
+      <div class="white_spot" style="left:465px;top:353px;" >
+        <div class="pulse"></div>
+      </div>
+      <div class="white_spot" style="left:451px;top:425px;" >
+        <div class="pulse"></div>
+      </div>
+      <div class="white_spot" style="left:473px;top:390px;" >
+        <div class="pulse"></div>
+      </div>
+      <div class="white_spot" style="left:520px;top:380px;" >
+        <div class="pulse"></div>
+      </div>
+      <div class="spot" value=5 style="left:570px;top:390px;" >
+        <div class="pulse"></div>
+      </div>
+      <div class="spot" value=6 style="left:595px;top:365px;" >
+        <div class="pulse"></div>
+      </div>
+      <div class="white_spot" style="left:575px;top:470px;" >
+        <div class="pulse"></div>
+      </div>
+      <div class="white_spot" style="left:580px;top:445px;" >
+        <div class="pulse"></div>
+      </div>
+      <div class="white_spot" style="left:790px;top:820px;" >
+        <div class="pulse"></div>
+      </div
+      ><div class="white_spot" style="left:835px;top:790px;" >
+        <div class="pulse"></div>
+      </div>
+      <div class="spot" value=1 style="left:815px;top:880px;" >
+        <div class="pulse"></div>
+      </div>
+      <div class="white_spot" style="left:980px;top:910px;" >
+        <div class="pulse"></div>
+      </div>
+      <div class="white_spot" style="left:960px;top:865px;" >
+        <div class="pulse"></div>
+      </div>
+      <div class="spot" style="left: 1030px;top: 765px;" value=0>
+        <div class="pulse"></div>
+      </div>
+      <div class="white_spot" style="left:1060px;top:760px;" >
+        <div class="pulse"></div>
+      </div>
+      <div class="white_spot" style="left:1100px;top:730px;" >
+        <div class="pulse"></div>
+      </div>
+      <div class="white_spot" style="left:1100px;top:585px;" >
+        <div class="pulse"></div>
+      </div>
+      <div class="white_spot" style="left:940px;top:530px;" >
+        <div class="pulse"></div>
+      </div>
+      <div class="white_spot" style="left:970px;top:510px;" >
+        <div class="pulse"></div>
+      </div>
+      <div class="spot" value=3 style="left:980px;top:335px;" >
+        <div class="pulse"></div>
+      </div>
+      <div class="white_spot" style="left:1010px;top:530px;" >
+        <div class="pulse"></div>
+      </div>
+      <div class="white_spot" style="left:1000px;top:550px;" >
+        <div class="pulse"></div>
+      </div>
+      <div class="spot" style="left:1010px;top:570px;" value=1 >
+        <div class="pulse"></div>
+      </div>
+      <div class="white_spot" style="left:1040px;top:650px;" >
+        <div class="pulse"></div>
+      </div>
+      <div class="white_spot" style="left:925px;top:670px;" >
+        <div class="pulse"></div>
+      </div>
+      <div class="white_spot" style="left:950px;top:680px;" >
+        <div class="pulse"></div>
+      </div>
+      <div class="spot" style="left:970px;top:690px;" value=3 >
+        <div class="pulse"></div>
+      </div>
+      <div class="white_spot" style="left:940px;top:695px;" >
+        <div class="pulse"></div>
+      </div>
+      <div class="white_spot" style="left:770px;top:705px;" >
+        <div class="pulse"></div>
+      </div>
+      <div class="white_spot" style="left:950px;top:725px;" >
+        <div class="pulse"></div>
+      </div>
+  </div>
+</div><div id="top">
+  <div class="controls">
+    <div class="button btn_01" id="btn_01">Projects</div>
+    <div class="button btn_02" id="btn_02">Products</div>
+    <div class="button btn_03" id="btn_03">Companies</div>
+    <div class="button btn_04" id="btn_04">Connect</div>
+    <div class="logo small_logo"></div>
+  </div>
+  <div class="content">
+    <div class="header">
+      <div class="icon_holder"><span class="icon"></span></div>
+      <div class="title"></div>
+      <div class="description"></div>
+      <div class="close"></div>
+      <div class="flip"></div>
+      <div class="back"></div>
+    </div>
+    <div class="holder">
+      <div class="type projects">
+        <div class="projects_cont">
+          <div class="arrow_left"></div>
+          <div class="projects_content contenter">
+            <ul class="projects_list">
+              <li class="project_item" value="pjt_01">
+                <div class="project_image_holder"><img src="projects/beira_port_01.jpg"/	></div>
+                <div class="project_info">
+                  <h6>EnI, ZEST, Shaw Controls</h6>
+                  <h3>Beira Port</h3>
+                </div>
+              </li>
+              <li class="project_item" value="pjt_02">
+                <div class="project_image_holder"><img src="projects/bulyanhulu_01.jpg"/	></div>
+                <div class="project_info">
+                  <h6>ZEST, ZEST Energy, Shaw controls, EnI, Transformer </h6>
+                  <h3>Bulyanhulu Gold Mine</h3>
+                </div>
+              </li>
+              <li class="project_item" value="pjt_03">
+                <div class="project_image_holder"><img src="projects/kinsenda_01.jpg"/	></div>
+                <div class="project_info">
+                  <h6>ZEST, Shaw controls, ZEST EnergyA</h6>
+                  <h3>Kinsenda</h3>
+                </div>
+              </li>
+              <li class="project_item" value="pjt_04">
+                <div class="project_image_holder"><img src="projects/twangiza_01.jpg"/	></div>
+                <div class="project_info">
+                  <h6>ZEST, Shaw controls</h6>
+                  <h3>Twangiza</h3>
+                </div>
+              </li>
+              <li class="project_item" value="pjt_05">
+                <div class="project_image_holder"><img src="projects/konkola_01.jpg"/	></div>
+                <div class="project_info">
+                  <h6>EnI, ZEST, Shaw controls</h6>
+                  <h3>Konkola North</h3>
+                </div>
+              </li>
+              <li class="project_item" value="pjt_06">
+                <div class="project_image_holder"><img src="projects/edikan_01.jpg"/	></div>
+                <div class="project_info">
+                  <h6>ZEST</h6>
+                  <h3>Edikan Gold Mine</h3>
+                </div>
+              </li>
+              <li class="project_item" value="pjt_07">
+                <div class="project_image_holder"><img src="projects/perkoa_01.jpg"/	></div>
+                <div class="project_info">
+                  <h6>EnI, ZEST, Shaw controls</h6>
+                  <h3>Perkoa Zink Mine</h3>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="arrow_right"></div>
+        </div>
+      </div>
+      <div class="type products">
+        <div class="products_cont">
+          <div class="arrow_left"></div>
+          <div class="products_content contenter">
+            <ul class="products_list">
+              <li class="product_item" value="pdc_01">
+                <div class="product_image_holder"><img src="products/W22_0027.png"/	></div>
+                <div class="product_info">
+                  <h6>Zest Electric Motors</h6>
+                  <h3>W2</h3>
+                </div>
+              </li>
+              <li class="product_item" value="pdc_02">
+                <div class="product_image_holder"><img src="products/W50_0018.png"/	></div>
+                <div class="product_info">
+                  <h6>Zest Electric Motors</h6>
+                  <h3>W50</h3>
+                </div>
+              </li>
+              <li class="product_item" value="pdc_03">
+                <div class="product_image_holder"><img src="products/CFW11_0014.png"/	></div>
+                <div class="product_info">
+                  <h6>Zest Electric mortos</h6>
+                  <h3>CFW-11</h3>
+                </div>
+              </li>
+              <li class="product_item" value="pdc_04">
+                <div class="product_image_holder"><img src="products/TRUCK_0068.png"/	></div>
+                <div class="product_info">
+                  <h6>Zest Energy</h6>
+                  <h3>Mobile substation</h3>
+                </div>
+              </li>
+              <li class="product_item" value="pdc_05">
+                <div class="product_image_holder"><img src="products/E_HOUSE_0008.png" style="
+    height: 100%;
+"/></div>
+                <div class="product_info">
+                  <h6>Shaw Controls</h6>
+                  <h3>E-House</h3>
+                </div>
+              </li>
+              <li class="product_item" value="pdc_06">
+                <div class="product_image_holder"><img src="products/PV_BOX_0021.png"/	></div>
+                <div class="product_info">
+                  <h6>Shaw Controls</h6>
+                  <h3>Containerised MCC</h3>
+                </div>
+              </li>
+              <li class="product_item" value="pdc_07">
+                <div class="product_image_holder"><img src="products/TRANSFORMER_0024.png" style="
+    height: 110%;
+"/></div>
+                <div class="product_info">
+                  <h6>WEG TRANSFORMERS</h6>
+                  <h3>Transformer</h3>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="arrow_right"></div>
+        </div>
+      </div>
+      <div class="type companies">
+        <div class="company_cont">
+          <div class="arrow_left"></div>
+          <div class="company_content contenter">
+            <ul class="companies_list">
+              <li class="company_item" value="cmp_01">
+                <div class="company_logo_holder"><img class="company_logo" src="companies/eni.png"/></div>
+                <div class="company_info">
+                  <h6>Electrical, Instrumentation, Control,Engineering and Construction</h6>
+                  <h3>ENI</h3>
+                </div>
+              </li>
+              <li class="company_item" value="cmp_02">
+                <div class="company_logo_holder"><img class="company_logo" src="companies/zest_gen.png" style="
+    margin-top: 43px;
+"/></div>
+                <div class="company_info">
+                  <h6>Electric Power Generation</h6>
+                  <h3>Generator Set Division</h3>
+                </div>
+              </li>
+              <li class="company_item" value="cmp_03">
+                <div class="company_logo_holder"><img class="company_logo" src="companies/shaw.png" style="
+    margin-top: 80px;
+"/></div>
+                <div class="company_info">
+                  <h6>Motor Control Centres, Packaged Switchgear Solutions</h6>
+                  <h3>Shaw Controls</h3>
+                </div>
+              </li>
+              <li class="company_item" value="cmp_04">
+                <div class="company_logo_holder"><img class="company_logo" src="companies/zest_weg.png" style="
+    margin-top: 68px;
+"/></div>
+                <div class="company_info">
+                  <h6>Electric Motors, Variable Speed Drives, Transformers, Switchgear</h6>
+                  <h3>Zest Electric Motors</h3>
+                </div>
+              </li>
+              <li class="company_item" value="cmp_05">
+                <div class="company_logo_holder"><img class="company_logo" src="companies/zest_energy.png" style="
+    margin-top: 63px;
+"/></div>
+                <div class="company_info">
+                  <h6>Integrated Power Generation, Co–Generation and Energy Solutions</h6>
+                  <h3>Zest Energy</h3>
+                </div>
+              </li>
+              <li class="company_item" value="cmp_06">
+                <div class="company_logo_holder"><img class="company_logo" src="companies/ghana.png" style="margin-top: 45px;"/></div>
+                <div class="company_info">
+                  <h6>Electric Motors, Variable Speed Drives, Transformers, Switchgear</h6>
+                  <h3>Zest Ghana</h3>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="arrow_right"></div>
+        </div>
+      </div>
+      <div class="item_viewer">
+        <div class="extra_elements">
+          <div class="line_right"></div>
+          <div class="line_left"></div>
+        </div>
+        <div class="col_01">
+          <h3>Product Features</h3>
+          <p>- Rated output: 75kW to 1250kW /n<br/>
+            - Number of poles: 2 to 12/n<br/>
+            - Frame sizes: 315H/G to 450J/H /n<br/>
+            - Frequency: 50 and 60 H/n<br/>
+            - Voltage: 380 to 6600V <br/>
+            - Rated output: 75kW to 1250kW /n<br/>
+            - Number of poles: 2 to 12/n<br/>
+            - Frame sizes: 315H/G to 450J/H /n<br/>
+            - Frequency: 50 and 60 H/n<br/>
+            - Voltage: 380 to 6600V <br/>
+          </p>
+        </div>
+        <div class="col_02">
+          <h3>Product info</h3>
+          <p>WEG W50 motors offer not only excellent performance, but comply with the strictest efficiency and safety criteria in the 
+            most severe applications. The compact design provides high performance, while their robust frames ensure low vibration levels. The new mechanical concept not only optimizes characteristics like mass and length, but also offers product versatility and reduced maintenance.accusantium doloremque laudantium, totam rem aperiam. </p>
+        </div>
+        <div class="preview">
+           <div class="image_viewer">
+           <div class="img_prev"></div>
+          <div class="img_holder">
+            <div class="image_container">
+              <div class="scroll_image"><img src="companies/ta_image_03.jpg" class="phase_2_image phase_2_image_01" /></div>
+              <div class="scroll_image"><img src="companies/ta_image_03.jpg" class="phase_2_image phase_2_image_02" /></div>
+              <div class="scroll_image"><img src="companies/ta_image_03.jpg" class="phase_2_image phase_2_image_03" /></div>
+              <div class="scroll_image"><img src="companies/ta_image_03.jpg" class="phase_2_image phase_2_image_04" /></div>
+              <div class="scroll_image"><img src="companies/ta_image_03.jpg" class="phase_2_image phase_2_image_05" /></div>
+              </div>
+              
+              
+            </div>
+            <div class="img_next"></div>
+            <div class="image_selector"><span class="image_01 selected"></span><span class="image_02"></span><span class="image_03"></span><span class="image_04"></span><span class="image_05"></span></div>	</div>
+            <div class="vid_container">
+            <video class="phase_2_video" id="vid_bottom" width="572" autoplay loop src="videos/W22x.webm" > </video>
+            </div>
+          </div>
+        </div>
+        <div class="type open connect">
+          <form id="connect_form_01">
+            <label class="input_header">Personal Information</label>
+            <div class="colum colum_01">
+              <input type="text" class="customer_name_01" placeholder="Name">
+              <input type="text" class="customer_surname_01" placeholder="Surname">
+              <input type="text" class="customer_company_01" placeholder="Company">
+            </div>
+            <div class="colum colum_02">
+              <input type="text" class="customer_country_01" placeholder="Country">
+              <input type="text" class="customer_number_01" placeholder="Contact Number">
+              <input type="email" class="customer_email_01" placeholder="E-mail Adress">
+            </div>
+            <div class="colum colum_03">
+              <label class="input_header select_product">Select Product</label>
+              <div class="product_selects">
+
+                <input type="checkbox" class="select_01_product_01 product_select" name="select_01_product_01"/>
+                <label >ENI</label>
+                <input type="checkbox" class="select_01_product_02 product_select" name="select_01_product_02"/>
+                <label >Generator Set Division</label>
+                <input type="checkbox" class="select_01_product_03 product_select" name="select_01_product_03"/>
+                <label >Shaw Controls</label>
+                <input type="checkbox" class="select_01_product_04 product_select" name="select_01_product_04"/>
+                <label >Zest Electric Motors</label>
+                <input type="checkbox" class="select_01_product_05 product_select" name="select_01_product_05"/>
+                <label >Zest Energy</label>
+                <input type="checkbox" class="select_01_product_06 product_select" name="select_01_product_06"/>
+                <label >Zest Ghana</label>
+              </div>
+            </div>
+            <div class="colum colum_04">
+            <div class="inform"></div>
+              <input type="button" class="clear_form" value="clear">
+              <input type="button" class="form_submit" value="submit">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+</div>
+<div id="bottom">
+  <div class="controls">
+    <div class="button btn_01" id="btn_01">Projects</div>
+    <div class="button btn_02" id="btn_02">Products</div>
+    <div class="button btn_03" id="btn_03">Companies</div>
+    <div class="button btn_04" id="btn_04">Connect</div>
+    <div class="logo small_logo"></div>
+  </div>
+  <div class="content">
+    <div class="header">
+      <div class="icon_holder"><span class="icon"></span></div>
+      <div class="title"></div>
+      <div class="description"></div>
+      <div class="close"></div>
+      <div class="flip"></div>
+      <div class="back"></div>
+    </div>
+    <div class="holder">
+      <div class="type projects">
+        <div class="projects_cont">
+          <div class="arrow_left"></div>
+          <div class="projects_content contenter">
+            <ul class="projects_list">
+              <li class="project_item" value="pjt_01">
+                <div class="project_image_holder"><img src="projects/beira_port_01.jpg"/	></div>
+                <div class="project_info">
+                  <h6>EnI, ZEST, Shaw Controls</h6>
+                  <h3>Beira Port</h3>
+                </div>
+              </li>
+              <li class="project_item" value="pjt_02">
+                <div class="project_image_holder"><img src="projects/bulyanhulu_01.jpg"/	></div>
+                <div class="project_info">
+                  <h6>ZEST, ZEST Energy, Shaw controls, EnI, Transformer </h6>
+                  <h3>Bulyanhulu Gold Mine</h3>
+                </div>
+              </li>
+              <li class="project_item" value="pjt_03">
+                <div class="project_image_holder"><img src="projects/kinsenda_01.jpg"/	></div>
+                <div class="project_info">
+                  <h6>ZEST, Shaw controls, ZEST EnergyA</h6>
+                  <h3>Kinsenda</h3>
+                </div>
+              </li>
+              <li class="project_item" value="pjt_04">
+                <div class="project_image_holder"><img src="projects/twangiza_01.jpg"/	></div>
+                <div class="project_info">
+                  <h6>ZEST, Shaw controls</h6>
+                  <h3>Twangiza</h3>
+                </div>
+              </li>
+              <li class="project_item" value="pjt_05">
+                <div class="project_image_holder"><img src="projects/konkola_01.jpg"/	></div>
+                <div class="project_info">
+                  <h6>EnI, ZEST, Shaw controls</h6>
+                  <h3>Konkola North</h3>
+                </div>
+              </li>
+              <li class="project_item" value="pjt_06">
+                <div class="project_image_holder"><img src="projects/edikan_01.jpg"/	></div>
+                <div class="project_info">
+                  <h6>ZEST</h6>
+                  <h3>Edikan Gold Mine</h3>
+                </div>
+              </li>
+              <li class="project_item" value="pjt_07">
+                <div class="project_image_holder"><img src="projects/perkoa_01.jpg"/	></div>
+                <div class="project_info">
+                  <h6>EnI, ZEST, Shaw controls</h6>
+                  <h3>Perkoa Zink Mine</h3>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="arrow_right"></div>
+        </div>
+      </div>
+      <div class="type products">
+        <div class="products_cont">
+          <div class="arrow_left"></div>
+          <div class="products_content contenter">
+            <ul class="products_list">
+              <li class="product_item" value="pdc_01">
+                <div class="product_image_holder"><img src="products/W22_0027.png"/	></div>
+                <div class="product_info">
+                  <h6>Zest Electric Motors</h6>
+                  <h3>W2</h3>
+                </div>
+              </li>
+              <li class="product_item" value="pdc_02">
+                <div class="product_image_holder"><img src="products/W50_0018.png"/	></div>
+                <div class="product_info">
+                  <h6>Zest Electric Motors</h6>
+                  <h3>W50</h3>
+                </div>
+              </li>
+              <li class="product_item" value="pdc_03">
+                <div class="product_image_holder"><img src="products/CFW11_0014.png"/	></div>
+                <div class="product_info">
+                  <h6>Zest Electric mortos</h6>
+                  <h3>CFW-11</h3>
+                </div>
+              </li>
+              <li class="product_item" value="pdc_04">
+                <div class="product_image_holder"><img src="products/TRUCK_0068.png"/	></div>
+                <div class="product_info">
+                  <h6>Zest Energy</h6>
+                  <h3>Mobile substation</h3>
+                </div>
+              </li>
+              <li class="product_item" value="pdc_05">
+                <div class="product_image_holder"><img src="products/E_HOUSE_0008.png" style="
+    height: 100%;
+"/></div>
+                <div class="product_info">
+                  <h6>Shaw Controls</h6>
+                  <h3>E-House</h3>
+                </div>
+              </li>
+              <li class="product_item" value="pdc_06">
+                <div class="product_image_holder"><img src="products/PV_BOX_0021.png"/	></div>
+                <div class="product_info">
+                  <h6>Shaw Controls</h6>
+                  <h3>Containerised MCC</h3>
+                </div>
+              </li>
+              <li class="product_item" value="pdc_07">
+                <div class="product_image_holder"><img src="products/TRANSFORMER_0024.png" style="
+    height: 110%;
+"/></div>
+                <div class="product_info">
+                  <h6>WEG TRANSFORMERS</h6>
+                  <h3>Transformer</h3>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="arrow_right"></div>
+        </div>
+      </div>
+      <div class="type companies">
+        <div class="company_cont">
+           <div class="arrow_left"></div>
+          <div class="company_content contenter">
+            <ul class="companies_list">
+              <li class="company_item" value="cmp_01">
+                <div class="company_logo_holder"><img class="company_logo" src="companies/eni.png"/></div>
+                <div class="company_info">
+                  <h6>Electrical, Instrumentation, Control,Engineering and Construction</h6>
+                  <h3>ENI</h3>
+                </div>
+              </li>
+              <li class="company_item" value="cmp_02">
+                <div class="company_logo_holder"><img class="company_logo" src="companies/zest_gen.png" style="
+    margin-top: 43px;
+"/></div>
+                <div class="company_info">
+                  <h6>Electric Power Generation</h6>
+                  <h3>Generator Set Division</h3>
+                </div>
+              </li>
+              <li class="company_item" value="cmp_03">
+                <div class="company_logo_holder"><img class="company_logo" src="companies/shaw.png" style="
+    margin-top: 80px;
+"/></div>
+                <div class="company_info">
+                  <h6>Motor Control Centres, Packaged Switchgear Solutions</h6>
+                  <h3>Shaw Controls</h3>
+                </div>
+              </li>
+              <li class="company_item" value="cmp_04">
+                <div class="company_logo_holder"><img class="company_logo" src="companies/zest_weg.png" style="
+    margin-top: 68px;
+"/></div>
+                <div class="company_info">
+                  <h6>Electric Motors, Variable Speed Drives, Transformers, Switchgear</h6>
+                  <h3>Zest Electric Motors</h3>
+                </div>
+              </li>
+              <li class="company_item" value="cmp_05">
+                <div class="company_logo_holder"><img class="company_logo" src="companies/zest_energy.png" style="
+    margin-top: 63px;
+"/></div>
+                <div class="company_info">
+                  <h6>Integrated Power Generation, Co–Generation and Energy Solutions</h6>
+                  <h3>Zest Energy</h3>
+                </div>
+              </li>
+              <li class="company_item" value="cmp_06">
+                <div class="company_logo_holder"><img class="company_logo" src="companies/ghana.png" style="margin-top: 45px;"/></div>
+                <div class="company_info">
+                  <h6>Electric Motors, Variable Speed Drives, Transformers, Switchgear</h6>
+                  <h3>Zest Ghana</h3>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="arrow_right"></div>
+        </div>
+      </div>
+      <div class="item_viewer">
+        <div class="extra_elements">
+          <div class="line_right"></div>
+          <div class="line_left"></div>
+        </div>
+        <div class="col_01">
+          <h3>Product Features</h3>
+          <p>- Rated output: 75kW to 1250kW /n<br/>
+            - Number of poles: 2 to 12/n<br/>
+            - Frame sizes: 315H/G to 450J/H /n<br/>
+            - Frequency: 50 and 60 H/n<br/>
+            - Voltage: 380 to 6600V <br/>
+            - Rated output: 75kW to 1250kW /n<br/>
+            - Number of poles: 2 to 12/n<br/>
+            - Frame sizes: 315H/G to 450J/H /n<br/>
+            - Frequency: 50 and 60 H/n<br/>
+            - Voltage: 380 to 6600V <br/>
+          </p>
+        </div>
+        <div class="col_02">
+          <h3>Product info</h3>
+          <p>WEG W50 motors offer not only excellent performance, but comply with the strictest efficiency and safety criteria in the 
+            most severe applications. The compact design provides high performance, while their robust frames ensure low vibration levels. The new mechanical concept not only optimizes characteristics like mass and length, but also offers product versatility and reduced maintenance.accusantium doloremque laudantium, totam rem aperiam. </p>
+        </div>
+        <div class="preview">
+           <div class="image_viewer">
+           <div class="img_prev"></div>
+          <div class="img_holder">
+            <div class="image_container">
+              <div class="scroll_image"><img src="companies/ta_image_03.jpg" class="phase_2_image phase_2_image_01" /></div>
+              <div class="scroll_image"><img src="companies/ta_image_03.jpg" class="phase_2_image phase_2_image_02" /></div>
+              <div class="scroll_image"><img src="companies/ta_image_03.jpg" class="phase_2_image phase_2_image_03" /></div>
+              <div class="scroll_image"><img src="companies/ta_image_03.jpg" class="phase_2_image phase_2_image_04" /></div>
+              <div class="scroll_image"><img src="companies/ta_image_03.jpg" class="phase_2_image phase_2_image_05" /></div>
+              </div>
+              
+              
+            </div>
+            <div class="img_next"></div>
+            <div class="image_selector"><span class="image_01 selected"></span><span class="image_02"></span><span class="image_03"></span><span class="image_04"></span><span class="image_05"></span></div>	</div>
+            <div class="vid_container">
+            <video class="phase_2_video" id="vid_bottom" width="572" autoplay loop src="videos/W22x.webm" > </video>
+            </div>
+          </div>
+        </div>
+        <div class="type open connect">
+          <form id="connect_form_01">
+            <label class="input_header">Personal Information</label>
+            <div class="colum colum_01">
+              <input type="text" class="customer_name_01" placeholder="Name">
+              <input type="text" class="customer_surname_01" placeholder="Surname">
+              <input type="text" class="customer_company_01" placeholder="Company">
+            </div>
+            <div class="colum colum_02">
+              <input type="text" class="customer_country_01" placeholder="Country">
+              <input type="text" class="customer_number_01" placeholder="Contact Number">
+              <input type="email" class="customer_email_01" placeholder="E-mail Adress">
+            </div>
+            <div class="colum colum_03">
+              <label class="input_header select_product">Select Product</label>
+              <div class="product_selects">
+
+                <input type="checkbox" class="select_01_product_01 product_select" name="select_01_product_01"/>
+                <label >ENI</label>
+                <input type="checkbox" class="select_01_product_02 product_select" name="select_01_product_02"/>
+                <label >Generator Set Division</label>
+                <input type="checkbox" class="select_01_product_03 product_select" name="select_01_product_03"/>
+                <label >Shaw Controls</label>
+                <input type="checkbox" class="select_01_product_04 product_select" name="select_01_product_04"/>
+                <label >Zest Electric Motors</label>
+                <input type="checkbox" class="select_01_product_05 product_select" name="select_01_product_05"/>
+                <label >Zest Energy</label>
+                <input type="checkbox" class="select_01_product_06 product_select" name="select_01_product_06"/>
+                <label >Zest Ghana</label>
+              </div>
+            </div>
+            <div class="colum colum_04">
+            <div class="inform"></div>
+              <input type="button" class="clear_form" value="clear">
+              <input type="button" class="form_submit" value="submit">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+	</body>
+</html>
